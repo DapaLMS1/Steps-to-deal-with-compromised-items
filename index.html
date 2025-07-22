@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dealing with Compromised Items</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom colors using Tailwind's extend theme */
+        :root {
+            --color-dark-purple: #532A8C;
+            --color-light-purple-grey: #9D8ABB;
+            --color-green: #7ABF49;
+            --color-light-green: #96BF78;
+            --color-light-grey: #F2F2F2;
+            --color-medium-purple: #C3ACE8;
+        }
+
+        .bg-dark-purple { background-color: var(--color-dark-purple); }
+        .text-dark-purple { color: var(--color-dark-purple); }
+        .border-dark-purple { border-color: var(--color-dark-purple); }
+
+        .bg-light-purple-grey { background-color: var(--color-light-purple-grey); }
+        .text-light-purple-grey { color: var(--color-light-purple-grey); }
+
+        .bg-green { background-color: var(--color-green); }
+        .text-green { color: var(--color-green); }
+
+        .bg-light-green { background-color: var(--color-light-green); }
+        .text-light-green { color: var(--color-light-green); }
+
+        .bg-light-grey { background-color: var(--color-light-grey); }
+        .text-light-grey { color: var(--color-light-grey); }
+
+        .bg-medium-purple { background-color: var(--color-medium-purple); }
+        .text-medium-purple { color: var(--color-medium-purple); }
+
+        /* Font family */
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        /* Transition for smooth opening/closing */
+        .collapse-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .collapse-content.active {
+            max-height: 1000px; /* A large enough value to accommodate content */
+            transition: max-height 0.5s ease-in;
+        }
+
+        /* Rotate arrow icon */
+        .arrow-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .arrow-icon.rotate {
+            transform: rotate(180deg);
+        }
+
+        /* Styling for the circular number */
+        .step-number-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem; /* Equivalent to w-10 */
+            height: 2.5rem; /* Equivalent to h-10 */
+            border-radius: 9999px; /* Equivalent to rounded-full */
+            background-color: var(--color-dark-purple);
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem; /* Equivalent to text-xl */
+            margin-right: 1rem; /* Equivalent to mr-4 */
+            flex-shrink: 0; /* Prevent shrinking on smaller screens */
+        }
+    </style>
+</head>
+<body class="bg-light-grey min-h-screen p-4 sm:p-6 md:p-8 flex items-center justify-center">
+
+    <div class="max-w-4xl w-full bg-white rounded-lg shadow-xl overflow-hidden">
+        <header class="bg-dark-purple p-6 rounded-t-lg">
+            <h1 class="text-3xl font-bold text-white text-center">Steps for Dealing with Compromised Items</h1>
+        </header>
+
+        <main class="p-6">
+            <!-- Step 1: Immediate Isolation -->
+            <div class="mb-4 last:mb-0">
+                <div class="flex justify-between items-center bg-medium-purple text-dark-purple p-4 rounded-lg cursor-pointer shadow-md hover:shadow-lg transition-shadow duration-200" onclick="toggleCollapse(this)">
+                    <h2 class="text-xl font-semibold flex items-center">
+                        <span class="step-number-circle">1</span>Immediate Isolation
+                    </h2>
+                    <svg class="w-6 h-6 text-dark-purple arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+                <div class="collapse-content bg-white rounded-b-lg mt-2 border border-medium-purple">
+                    <div class="p-4 text-dark-purple">
+                        <p class="mb-2">The compromised item (or the entire load, if the compromise affects the whole batch) must be immediately isolated from all other sterile or clean items.</p>
+                        <p>It should be clearly marked as "compromised" or "non-sterile."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Do Not Use -->
+            <div class="mb-4 last:mb-0">
+                <div class="flex justify-between items-center bg-medium-purple text-dark-purple p-4 rounded-lg cursor-pointer shadow-md hover:shadow-lg transition-shadow duration-200" onclick="toggleCollapse(this)">
+                    <h2 class="text-xl font-semibold flex items-center">
+                        <span class="step-number-circle">2</span>Do Not Use
+                    </h2>
+                    <svg class="w-6 h-6 text-dark-purple arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+                <div class="collapse-content bg-white rounded-b-lg mt-2 border border-medium-purple">
+                    <div class="p-4 text-dark-purple">
+                        <p>Under no circumstances should a compromised item be used on a patient. Its sterility cannot be guaranteed.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Dismantle for Reprocessing -->
+            <div class="mb-4 last:mb-0">
+                <div class="flex justify-between items-center bg-medium-purple text-dark-purple p-4 rounded-lg cursor-pointer shadow-md hover:shadow-lg transition-shadow duration-200" onclick="toggleCollapse(this)">
+                    <h2 class="text-xl font-semibold flex items-center">
+                        <span class="step-number-circle">3</span>Dismantle for Reprocessing
+                    </h2>
+                    <svg class="w-6 h-6 text-dark-purple arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+                <div class="collapse-content bg-white rounded-b-lg mt-2 border border-medium-purple">
+                    <div class="p-4 text-dark-purple">
+                        <p class="mb-2">If the item is a multi-part instrument, it must be dismantled into its individual components. This is crucial because contaminants can hide in crevices, hinges, or internal channels, and sterilising agents may not penetrate effectively if the item is not fully disassembled.</p>
+                        <p>Dismantling ensures that all surfaces can be thoroughly cleaned and that the sterilant can reach every part during the subsequent reprocessing cycle.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Full Reprocessing -->
+            <div class="mb-4 last:mb-0">
+                <div class="flex justify-between items-center bg-medium-purple text-dark-purple p-4 rounded-lg cursor-pointer shadow-md hover:shadow-lg transition-shadow duration-200" onclick="toggleCollapse(this)">
+                    <h2 class="text-xl font-semibold flex items-center">
+                        <span class="step-number-circle">4</span>Full Reprocessing
+                    </h2>
+                    <svg class="w-6 h-6 text-dark-purple arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+                <div class="collapse-content bg-white rounded-b-lg mt-2 border border-medium-purple">
+                    <div class="p-4 text-dark-purple">
+                        <p class="mb-2">The dismantled components must re-enter the complete reprocessing cycle from the very beginning. This includes:</p>
+                        <ul class="list-disc list-inside ml-4">
+                            <li><strong>Cleaning:</strong> Thorough manual and/or automated cleaning to remove all organic material and debris.</li>
+                            <li><strong>Inspection:</strong> Detailed inspection of each component for cleanliness, damage, and functionality.</li>
+                            <li><strong>Packaging:</strong> Re-packaging the item correctly in appropriate sterilisation packaging.</li>
+                            <li><strong>Sterilisation:</strong> Running the item through a new, validated sterilisation cycle.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Documentation of Failure -->
+            <div class="mb-4 last:mb-0">
+                <div class="flex justify-between items-center bg-medium-purple text-dark-purple p-4 rounded-lg cursor-pointer shadow-md hover:shadow-lg transition-shadow duration-200" onclick="toggleCollapse(this)">
+                    <h2 class="text-xl font-semibold flex items-center">
+                        <span class="step-number-circle">5</span>Documentation of Failure
+                    </h2>
+                    <svg class="w-6 h-6 text-dark-purple arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+                <div class="collapse-content bg-white rounded-b-lg mt-2 border border-medium-purple">
+                    <div class="p-4 text-dark-purple">
+                        <p class="mb-2">All details of the compromised item and the failed sterilisation event must be meticulously recorded. This includes:</p>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>The date and time of identification.</li>
+                            <li>The specific reason for compromise (e.g., "damp pack," "torn bag," "indicator fail").</li>
+                            <li>The steriliser number and cycle/load number.</li>
+                            <li>Details of the item(s) affected.</li>
+                            <li>The corrective action taken (i.e., reprocessing).</li>
+                            <li>The name and signature of the person identifying and documenting the issue.</li>
+                        </ul>
+                        <p class="mt-2">This documentation is vital for quality assurance, auditing, and identifying potential recurring issues with equipment or procedures.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6: Inform Supervisor/Manager -->
+            <div class="mb-4 last:mb-0">
+                <div class="flex justify-between items-center bg-medium-purple text-dark-purple p-4 rounded-lg cursor-pointer shadow-md hover:shadow-lg transition-shadow duration-200" onclick="toggleCollapse(this)">
+                    <h2 class="text-xl font-semibold flex items-center">
+                        <span class="step-number-circle">6</span>Inform Supervisor/Manager
+                    </h2>
+                    <svg class="w-6 h-6 text-dark-purple arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+                <div class="collapse-content bg-white rounded-b-lg mt-2 border border-medium-purple">
+                    <div class="p-4 text-dark-purple">
+                        <p>The incident must be reported to a supervisor or manager to ensure awareness, facilitate investigation into the cause, and implement any necessary systemic changes to prevent future occurrences.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7: Quarantine and Investigation -->
+            <div class="mb-4 last:mb-0">
+                <div class="flex justify-between items-center bg-medium-purple text-dark-purple p-4 rounded-lg cursor-pointer shadow-md hover:shadow-lg transition-shadow duration-200" onclick="toggleCollapse(this)">
+                    <h2 class="text-xl font-semibold flex items-center">
+                        <span class="step-number-circle">7</span>Quarantine and Investigation
+                    </h2>
+                    <svg class="w-6 h-6 text-dark-purple arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+                <div class="collapse-content bg-white rounded-b-lg mt-2 border border-medium-purple">
+                    <div class="p-4 text-dark-purple">
+                        <p>If a pattern of compromised items emerges, or if the failure is significant (e.g., a steriliser malfunction), the steriliser may need to be quarantined and investigated by a qualified technician before further use.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        /**
+         * Toggles the visibility of the content associated with a clicked step header.
+         * Closes any currently open step before opening the new one.
+         * @param {HTMLElement} headerElement The div element representing the step header that was clicked.
+         */
+        function toggleCollapse(headerElement) {
+            // Get the parent div of the clicked header (which is the step container)
+            const stepContainer = headerElement.closest('div');
+            // Get the content element which is the next sibling of the header
+            const content = headerElement.nextElementSibling;
+            // Get the arrow icon within the header
+            const arrowIcon = headerElement.querySelector('.arrow-icon');
+
+            // Close all other open content sections and reset their arrows
+            document.querySelectorAll('.collapse-content.active').forEach(openContent => {
+                if (openContent !== content) { // Don't close the one just clicked
+                    openContent.classList.remove('active');
+                    openContent.previousElementSibling.querySelector('.arrow-icon').classList.remove('rotate');
+                }
+            });
+
+            // Toggle the 'active' class on the content element to show/hide it
+            content.classList.toggle('active');
+            // Toggle the 'rotate' class on the arrow icon
+            arrowIcon.classList.toggle('rotate');
+        }
+    </script>
+</body>
+</html>
